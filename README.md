@@ -1,7 +1,7 @@
 # Daily Memo
 
 ```
-Note Daily Memo App
+Daily Memory Taking Site
 
 Next.ts
 React.ts
