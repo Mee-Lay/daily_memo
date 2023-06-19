@@ -3,7 +3,6 @@
 ```
 Daily Memory Taking Site
 
-Next.ts
 React.ts
 React Material UI
 ```
@@ -11,5 +10,15 @@ React Material UI
 ## Run
 
 ```
-npm run dev
+npm install
+npm start
+npm test
+npm run build
+```
+
+## TODO
+
+```
+Memo List, Create, Update, Delete
+Save in local storage
 ```
