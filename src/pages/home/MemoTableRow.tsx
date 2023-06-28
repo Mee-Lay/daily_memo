@@ -3,6 +3,7 @@ import { IconButton, TableCell, TableRow } from "@mui/material";
 import { Stack } from "@mui/system";
 import { withTranslation } from "react-i18next";
 import { Memo } from "../../models/memo";
+import moment from "moment";
 
 const MemoTableRow = ({
   memo,
@@ -18,9 +19,9 @@ const MemoTableRow = ({
       <TableCell
         size="small"
         align="left"
-        sx={{ width: "20%", verticalAlign: "middle" }}
+        sx={{ width: "25%", verticalAlign: "middle" }}
       >
-        {memo.date.toLocaleString()}
+        {moment(memo.date.toString()).format("YYYY-MM-DD HH:mm:ss")}
       </TableCell>
       <TableCell
         size="small"

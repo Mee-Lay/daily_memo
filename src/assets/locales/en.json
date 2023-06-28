@@ -1,1 +1,16 @@
-{}
+{
+  "daily_memo": "DAILY MEMO",
+  "language": "Language",
+  "english": "English",
+  "japanese": "Japanese",
+  "date": "Date",
+  "title": "Title",
+  "memo": "Memo",
+  "add": "Add",
+  "edit": "Edit",
+  "delete": "Delete",
+  "add_memo": "Add Memo",
+  "edit_memo": "Edit Memo",
+  "delete_memo": "Delete Memo",
+  "delete_memo_confirm": "Are you sure you want to delete the memo with the following date?"
+}

@@ -1,1 +1,16 @@
-{}
+{
+  "daily_memo": "DAILY MEMO",
+  "language": "言語",
+  "english": "英語",
+  "japanese": "日本語",
+  "date": "日時",
+  "title": "タイトル",
+  "memo": "メモ",
+  "add": "追加",
+  "edit": "編集",
+  "delete": "削除",
+  "add_memo": "メモ追加",
+  "edit_memo": "メモ編集",
+  "delete_memo": "メモ削除",
+  "delete_memo_confirm": "次の日付のメモを削除してもよろしいですか?"
+}

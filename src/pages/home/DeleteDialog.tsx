@@ -10,8 +10,9 @@ import {
 import { Box } from "@mui/system";
 import { withTranslation } from "react-i18next";
 import { Memo } from "../../models/memo";
+import { t } from "i18next";
 
-const DeleteDialog = ({
+const DeleteMemoDialog = ({
   open,
   setOpen,
   memo,
@@ -29,13 +30,12 @@ const DeleteDialog = ({
         <Typography
           sx={{ fontSize: "2vw", fontWeight: "bold", textAlign: "center" }}
         >
-          {"Delete Memo"}
+          {t("delete_memo")}
         </Typography>
       </DialogTitle>
       <DialogContent>
         <Typography variant="body1" sx={{ textAlign: "center" }}>
-          Are you sure you want to delete the memo with the following date? [
-          {memo.date.toLocaleString()}]
+          {t("delete_memo_confirm")} [{memo.date.toLocaleString()}]
         </Typography>
         <Box sx={{ height: "1vh" }}></Box>
         <Stack direction={"row"} justifyContent={"center"}>
@@ -44,7 +44,7 @@ const DeleteDialog = ({
             endIcon={<Icon.Delete />}
             onClick={() => onClickDelete(memo.date)}
           >
-            Delete
+            {t("delete")}
           </Button>
         </Stack>
       </DialogContent>
@@ -52,4 +52,4 @@ const DeleteDialog = ({
   );
 };
 
-export default withTranslation()(DeleteDialog);
+export default withTranslation()(DeleteMemoDialog);

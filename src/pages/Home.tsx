@@ -1,35 +1,21 @@
-import * as Icon from "@mui/icons-material";
-import {
-  Button,
-  Card,
-  Grid,
-  Table,
-  TableBody,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Card, Grid, Table, TableBody } from "@mui/material";
 import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useState } from "react";
 import { withTranslation } from "react-i18next";
+import { useLocalStorage } from "usehooks-ts";
 import { Memo } from "../models/memo";
-import EditDialog from "./home/EditDialog";
+import constants from "../utils/constants";
+import AddMemo from "./home/AddMemo";
+import DeleteMemoDialog from "./home/DeleteDialog";
+import EditMemoDialog from "./home/EditDialog";
 import MemoTableHeader from "./home/MemoTableHeader";
 import MemoTableRow from "./home/MemoTableRow";
-import DeleteDialog from "./home/DeleteDialog";
 
 const Home = () => {
-  const [memoList, setMemoList] = useState([] as Memo[]);
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      title: "",
-      memo: "",
-    },
-  });
+  const [memoList, setMemoList] = useLocalStorage(
+    constants.memoListLocalStorageKey,
+    [] as Memo[]
+  );
   const [editDialog, setEditDialog] = useState(false);
   const [toEditMemo, setToEditMemo] = useState({
     date: new Date(),
@@ -43,9 +29,10 @@ const Home = () => {
     memo: "",
   } as Memo);
 
-  useEffect(() => {
-    setMemoList([{ date: new Date(), title: "Test", memo: "Busy Day" }]);
-  }, []);
+  // useEffect(() => {
+  // console.debug(memoList);
+  // setMemoList([{ date: new Date(), title: "Test", memo: "Busy Day" }]);
+  // }, []);
 
   const handleAdd = async (formData: { title: string; memo: string }) => {
     const tmpMemoList = memoList;
@@ -68,7 +55,7 @@ const Home = () => {
               <TableBody>
                 {memoList.map((v, _) => (
                   <MemoTableRow
-                    key={v.date.getMilliseconds()}
+                    key={v.date.toString()}
                     memo={v}
                     onClickEdit={() => {
                       setToEditMemo(v);
@@ -87,115 +74,37 @@ const Home = () => {
 
         <Grid item xs={4}>
           {/* Add Memo */}
-          <Card elevation={1} sx={{ p: 2 }}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              ADD MEMO
-            </Typography>
-            <Box sx={{ height: "1vh" }}></Box>
-            <Controller
-              name="title"
-              control={control}
-              rules={{
-                required: true,
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  value={value}
-                  onChange={onChange}
-                  label="Title"
-                  size="small"
-                  fullWidth
-                  placeholder="Busy day"
-                  required
-                  error={errors.title !== undefined}
-                  helperText={
-                    errors.title && errors.title.type === "required"
-                      ? "Required"
-                      : ""
-                  }
-                />
-              )}
-            ></Controller>
-            <Box sx={{ height: "1vh" }}></Box>
-            <Controller
-              name="memo"
-              control={control}
-              rules={{
-                required: true,
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  value={value}
-                  onChange={onChange}
-                  label="Memo"
-                  multiline
-                  rows={20}
-                  maxRows={20}
-                  fullWidth
-                  placeholder="Let's go"
-                  required
-                  error={errors.memo !== undefined}
-                  helperText={
-                    errors.memo && errors.memo.type === "required"
-                      ? "Required"
-                      : ""
-                  }
-                />
-              )}
-            ></Controller>
-            <Box sx={{ height: "1vh" }}></Box>
-            <Button
-              variant="contained"
-              endIcon={<Icon.Add />}
-              onClick={handleSubmit(handleAdd)}
-            >
-              Add
-            </Button>
-          </Card>
+          <AddMemo handleAdd={handleAdd}></AddMemo>
         </Grid>
       </Grid>
 
-      <EditDialog
+      <EditMemoDialog
         open={editDialog}
         setOpen={() => setEditDialog(!editDialog)}
         memo={toEditMemo}
         onClickEdit={(v) => {
           const tmpMemoList = memoList;
           const memoIndex = tmpMemoList.findIndex(
-            (memo) => memo.date.getMilliseconds() === v.date.getMilliseconds()
+            (memo) => memo.date.toString() === v.date.toString()
           );
-          console.log(memoIndex);
           tmpMemoList[memoIndex] = v;
           setMemoList(tmpMemoList);
           setEditDialog(false);
         }}
-      ></EditDialog>
+      ></EditMemoDialog>
 
-      <DeleteDialog
+      <DeleteMemoDialog
         open={deleteDialog}
         setOpen={() => setDeleteDialog(!deleteDialog)}
         memo={toDeleteMemo}
         onClickDelete={(v: Date) => {
           const tmpMemoList = memoList.filter(
-            (memo) => memo.date.getMilliseconds() !== v.getMilliseconds()
+            (memo) => memo.date.toString() !== v.toString()
           );
           setMemoList(tmpMemoList);
           setDeleteDialog(false);
         }}
-      ></DeleteDialog>
+      ></DeleteMemoDialog>
     </Box>
   );
 };

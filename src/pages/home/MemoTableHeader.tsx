@@ -11,21 +11,21 @@ const MemoTableHeader = () => {
           align="left"
           sx={{ width: "20%", py: "1vw", fontWeight: "bold" }}
         >
-          {t("Date")}
+          {t("date")}
         </TableCell>
         <TableCell
           size="small"
           align="left"
           sx={{ width: "20%", fontWeight: "bold" }}
         >
-          {t("Title")}
+          {t("title")}
         </TableCell>
         <TableCell
           size="small"
           align="left"
           sx={{ width: "50%", fontWeight: "bold" }}
         >
-          {t("Memo")}
+          {t("memo")}
         </TableCell>
         <TableCell
           size="small"

@@ -1,0 +1,15 @@
+code,en,jp
+daily_memo,DAILY MEMO,DAILY MEMO
+language,Language,言語
+english,English,英語
+japanese,Japanese,日本語
+date,Date,日時
+title,Title,タイトル
+memo,Memo,メモ
+add,Add,追加
+edit,Edit,編集
+delete,Delete,削除
+add_memo,Add Memo,メモ追加
+edit_memo,Edit Memo,メモ編集
+delete_memo,Delete Memo,メモ削除
+delete_memo_confirm,Are you sure you want to delete the memo with the following date?,次の日付のメモを削除してもよろしいですか?

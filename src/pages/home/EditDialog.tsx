@@ -8,12 +8,13 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import { t } from "i18next";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { withTranslation } from "react-i18next";
 import { Memo } from "../../models/memo";
-import { useEffect } from "react";
 
-const EditDialog = ({
+const EditMemoDialog = ({
   open,
   setOpen,
   memo,
@@ -56,7 +57,7 @@ const EditDialog = ({
         <Typography
           sx={{ fontSize: "2vw", fontWeight: "bold", textAlign: "center" }}
         >
-          {"Edit Memo"}
+          {t("edit_memo")}
         </Typography>
       </DialogTitle>
       <DialogContent>
@@ -71,7 +72,7 @@ const EditDialog = ({
             <TextField
               value={value}
               onChange={onChange}
-              label="Title"
+              label={t("title")}
               size="small"
               fullWidth
               placeholder="Busy day"
@@ -96,7 +97,7 @@ const EditDialog = ({
             <TextField
               value={value}
               onChange={onChange}
-              label="Memo"
+              label={t("memo")}
               multiline
               rows={20}
               maxRows={20}
@@ -116,11 +117,11 @@ const EditDialog = ({
           endIcon={<Icon.Edit />}
           onClick={handleSubmit(handleEdit)}
         >
-          Edit
+          {t("edit")}
         </Button>
       </DialogContent>
     </Dialog>
   );
 };
 
-export default withTranslation()(EditDialog);
+export default withTranslation()(EditMemoDialog);
