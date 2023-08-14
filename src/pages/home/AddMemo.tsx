@@ -23,6 +23,7 @@ const AddMemo = ({
 
   return (
     <Card elevation={1} sx={{ p: 2 }}>
+      {/* Title */}
       <Typography
         variant="h6"
         noWrap
@@ -40,6 +41,8 @@ const AddMemo = ({
         {t("add_memo")}
       </Typography>
       <Box sx={{ height: "1vh" }}></Box>
+
+      {/* Title */}
       <Controller
         name="title"
         control={control}
@@ -63,6 +66,8 @@ const AddMemo = ({
         )}
       ></Controller>
       <Box sx={{ height: "1vh" }}></Box>
+
+      {/* Memo */}
       <Controller
         name="memo"
         control={control}
@@ -88,6 +93,8 @@ const AddMemo = ({
         )}
       ></Controller>
       <Box sx={{ height: "1vh" }}></Box>
+
+      {/* Add Btn */}
       <Button
         variant="contained"
         endIcon={<Icon.Add />}

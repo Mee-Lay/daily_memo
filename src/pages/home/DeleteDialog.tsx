@@ -33,11 +33,15 @@ const DeleteMemoDialog = ({
           {t("delete_memo")}
         </Typography>
       </DialogTitle>
+
       <DialogContent>
+        {/* Text */}
         <Typography variant="body1" sx={{ textAlign: "center" }}>
           {t("delete_memo_confirm")} [{memo.date.toLocaleString()}]
         </Typography>
         <Box sx={{ height: "1vh" }}></Box>
+
+        {/* Delete Btn */}
         <Stack direction={"row"} justifyContent={"center"}>
           <Button
             variant="contained"

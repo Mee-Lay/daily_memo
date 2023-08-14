@@ -60,8 +60,11 @@ const EditMemoDialog = ({
           {t("edit_memo")}
         </Typography>
       </DialogTitle>
+
       <DialogContent>
         <Box sx={{ height: "1vh" }}></Box>
+
+        {/* Title */}
         <Controller
           name="title"
           control={control}
@@ -87,6 +90,8 @@ const EditMemoDialog = ({
           )}
         ></Controller>
         <Box sx={{ height: "1vh" }}></Box>
+
+        {/* Memo */}
         <Controller
           name="memo"
           control={control}
@@ -112,6 +117,8 @@ const EditMemoDialog = ({
           )}
         ></Controller>
         <Box sx={{ height: "1vh" }}></Box>
+
+        {/* Edit Btn */}
         <Button
           variant="contained"
           endIcon={<Icon.Edit />}

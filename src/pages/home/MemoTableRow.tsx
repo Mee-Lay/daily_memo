@@ -3,7 +3,7 @@ import { IconButton, TableCell, TableRow } from "@mui/material";
 import { Stack } from "@mui/system";
 import { withTranslation } from "react-i18next";
 import { Memo } from "../../models/memo";
-import moment from "moment";
+import { DateTimeFormatter } from "../../utils/date_time_formatter";
 
 const MemoTableRow = ({
   memo,
@@ -21,7 +21,7 @@ const MemoTableRow = ({
         align="left"
         sx={{ width: "25%", verticalAlign: "middle" }}
       >
-        {moment(memo.date.toString()).format("YYYY-MM-DD HH:mm:ss")}
+        {DateTimeFormatter.formatDate(memo.date)}
       </TableCell>
       <TableCell
         size="small"
